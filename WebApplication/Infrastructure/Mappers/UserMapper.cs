@@ -1,20 +1,20 @@
 ﻿using BLL.Interface.Entities;
-using MvcPL.Models;
+using WebApplication.Models;
 
 namespace WebApplication.Infrastructure.Mappers
 {
-    public static class MvcMappers
+    public static class UserMapper
     {
-        public static UserViewModel ToMvcUser(this UserEntity userEntity)
+        public static UserModel ToMvcUser(this UserEntity userEntity)
         {
-            return new UserViewModel()
+            return new UserModel()
             {
                 Id = userEntity.Id,
-                UserName = userEntity.UserName,
-                Role = userEntity.RoleId.ToString()
+                UserName = userEntity.UserName
+               
             };
         }
-        public static UserEntity ToBllUser(this UserViewModel userViewModel)
+        public static UserEntity ToBllUser(this UserModel userViewModel)
         {
             return new UserEntity()
             {

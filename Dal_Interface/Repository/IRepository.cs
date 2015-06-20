@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
@@ -10,8 +10,11 @@ namespace Dal.Interface.Repository
      public interface IRepository<TEntity> where TEntity : IEntity
     {
         IEnumerable<TEntity> GetAll();
+        TEntity GetById(int Id);
+        TEntity GetByUserName(string UserName);
         void Create(TEntity e);
         void Delete(TEntity e);
-        void Update(TEntity entity);
+        int GetId(TEntity e);
+        
     }
 }

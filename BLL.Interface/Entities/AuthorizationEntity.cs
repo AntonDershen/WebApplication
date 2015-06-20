@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace ORM
+namespace BLL.Interface.Entities
 {
-      public partial class Role
+    public class AuthorizationEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

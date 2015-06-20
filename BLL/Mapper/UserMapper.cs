@@ -11,7 +11,7 @@ namespace BLL.Mapper
             return new DalUser()
             {
                 Id = userEntity.Id,
-                Name = userEntity.UserName,
+                UserName = userEntity.UserName,
                 RoleId = userEntity.RoleId
             };
         }
@@ -20,7 +20,7 @@ namespace BLL.Mapper
             return new UserEntity()
             {
                 Id = dalUser.Id,
-                UserName = dalUser.Name,
+                UserName = dalUser.UserName,
                 RoleId = dalUser.RoleId
             };
         }

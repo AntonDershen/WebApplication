@@ -14,13 +14,8 @@ namespace ORM
         {
         }
         
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Authorization> Authorization { get; set; }
-        public virtual DbSet<DocumentDescription> DocumentDescription { get; set; }
-        public virtual DbSet<Documents> Documents { get; set; }
-        public virtual DbSet<UserRole> UserRole { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }

@@ -6,7 +6,7 @@ using Dal.Interface.Repository;
 using Ninject;
 using Ninject.Web.Common;
 using ORM;
-
+using Dal.Interface.DTO;
 namespace ResolverConfig
 {
     public static class ResolverConfig
@@ -23,19 +23,15 @@ namespace ResolverConfig
 
         private static void Configure(IKernel kernel, bool isWeb)
         {
-            if (isWeb)
-            {
-                kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-                kernel.Bind<DbContext>().To<EntityModel>().InRequestScope();
-            }
-            else
-            {
-                kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InSingletonScope();
-                kernel.Bind<DbContext>().To<EntityModel>().InSingletonScope();
-            }
+
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            kernel.Bind<DbContext>().To<EntityModel>().InRequestScope();
 
             kernel.Bind<IUserService>().To<UserService>();
-            kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IRepository<DalUser>>().To<UserRepository>();
+
+            kernel.Bind<IAuthorizationService>().To<AuthorizationService>();
+            kernel.Bind<IRepository<DalAuthorization>>().To<AuthorizationRepository>();
         }
     }
 }

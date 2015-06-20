@@ -10,20 +10,12 @@ namespace WebApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            string result = "Вы не авторизованы";
+            if (User.Identity.IsAuthenticated)
+            {
+                result = "Ваш логин: " + User.Identity.Name;
+            }
+            ViewBag.Identity = result;
             return View();
         }
     }
