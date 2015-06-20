@@ -68,7 +68,7 @@
     <Compile Include="Mapper\AuthorizationMapper.cs" />
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AuthorizationService.cs" />
+    <Compile Include="Services\AuthorizationServices.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@ using Ninject;
 using Ninject.Web.Common;
 using ORM;
 using Dal.Interface.DTO;
+
 namespace ResolverConfig
 {
     public static class ResolverConfig
@@ -30,8 +31,8 @@ namespace ResolverConfig
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IRepository<DalUser>>().To<UserRepository>();
 
-            kernel.Bind<IAuthorizationService>().To<AuthorizationService>();
-            kernel.Bind<IRepository<DalAuthorization>>().To<AuthorizationRepository>();
+            kernel.Bind<IAuthorizationService>().To<AuthorizationServices>();
+            kernel.Bind<IRepository<DalAuthorization>>().To<AuthrizationRepository>();
         }
     }
 }
