@@ -16,12 +16,13 @@ namespace WebApplication.Infrastructure.Mappers
                 RoleId = 1
             };
         }
-        public static AuthorizationEntity ToBllAuthorization(this RegisterModel registerModel)
+        public static AuthorizationEntity ToBllAuthorization(this RegisterModel registerModel,int UserId)
         {
             return new AuthorizationEntity
             {
-                Login = registerModel.UserName,
-                Password = registerModel.Password
+                Email = registerModel.Email,
+                Password = registerModel.Password,
+                UserId = UserId
             };
         
         }

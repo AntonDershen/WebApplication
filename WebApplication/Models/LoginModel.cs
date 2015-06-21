@@ -7,9 +7,10 @@ namespace WebApplication.Models
 {
     public class LoginModel
     {
-        [Display(Name="Login")]
-        public string Login { get; set; }
-         [Display(Name = "Password")]
+        [Display(Name="Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Password")]
         public string Password { get; set; }
     }
 }

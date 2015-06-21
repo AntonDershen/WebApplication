@@ -18,6 +18,14 @@ namespace ORM
         public virtual DbSet<Authorization> Authorization { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+          .HasMany(e => e.Authorizations)
+          .WithRequired(e => e.User)
+          .WillCascadeOnDelete(false);
+        }
+        public void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

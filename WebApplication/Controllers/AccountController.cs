@@ -31,7 +31,7 @@ namespace WebApplication.Controllers
             {
                 if(authService.CheckForm(model.ToBllUser()))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Login, true);
+                    FormsAuthentication.SetAuthCookie(model.Email, true);
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -49,9 +49,10 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (userService.CreateUser(model.ToBllUser()))
+                int id = userService.CreateUser(model.ToBllUser());
+                if (id>0)
                 {
-                    authService.CreateAuthorization(model.ToBllAuthorization());
+                    authService.CreateAuthorization(model.ToBllAuthorization(id));
                     FormsAuthentication.SetAuthCookie(model.UserName, true);
                     return RedirectToAction("Index", "Home");
                 }

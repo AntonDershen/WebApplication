@@ -26,15 +26,15 @@ namespace BLL.Services
             return userRepository.GetById(Id).ToBllUser();
 
         }
-        public bool CreateUser(UserEntity user)
+        public int CreateUser(UserEntity user)
         {
             if (userRepository.GetByUserName(user.UserName) == null)
             {
                 userRepository.Create(user.ToDalUser());
                 uow.Commit();
-                return true;
+                return userRepository.GetId(user.ToDalUser());
             }
-            return false;
+            return 0;
         }
         public void DeleteUser(UserEntity user)
         {

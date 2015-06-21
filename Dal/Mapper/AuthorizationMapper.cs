@@ -14,8 +14,9 @@ namespace Dal.Mapper
             return new DalAuthorization()
             {
                 Id = auth.Id,
-                Login = auth.Login,
-                Password = auth.Password
+                Email = auth.Email,
+                Password = auth.Password,
+                UserId = auth.UserId
             };
         }
         public static Authorization ToAuth(this DalAuthorization dalAuth)
@@ -23,8 +24,9 @@ namespace Dal.Mapper
             return new Authorization()
             {
                 Id = dalAuth.Id,
-                Login = dalAuth.Login,
-                Password = dalAuth.Password
+                Email = dalAuth.Email,
+                Password = dalAuth.Password,
+                UserId = dalAuth.UserId
             };
         }
 

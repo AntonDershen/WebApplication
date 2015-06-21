@@ -40,7 +40,7 @@ namespace BLL.Services
         }
         public bool CheckForm(AuthorizationEntity authorization)
         {
-            DalAuthorization auth =  authRepository.GetByUserName(authorization.Login);
+            DalAuthorization auth =  authRepository.GetByUserName(authorization.Email);
             if (auth != null && auth.Password == authorization.Password)
                 return true;
             return false;

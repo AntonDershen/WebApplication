@@ -9,16 +9,15 @@ namespace WebApplication.Infrastructure.Mappers
         {
             return new LoginModel()
             {
-                Login = authorisationEntity.Login,
+                Email = authorisationEntity.Email,
                 Password = authorisationEntity.Password
-
             };
         }
         public static AuthorizationEntity ToBllUser(this LoginModel loginModel)
         {
             return new AuthorizationEntity()
             {
-                Login = loginModel.Login,
+                Email = loginModel.Email,
                 Password = loginModel.Password
             };
         }

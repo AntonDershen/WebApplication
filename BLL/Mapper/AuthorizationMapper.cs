@@ -12,8 +12,9 @@ namespace BLL.Mapper
             return new DalAuthorization()
             {
                 Id = authorisationEntity.Id,
-                Login = authorisationEntity.Login,
-                Password = authorisationEntity.Password
+                Email = authorisationEntity.Email,
+                Password = authorisationEntity.Password,
+                UserId = authorisationEntity.UserId
             };
         }
         public static AuthorizationEntity ToBllAuthorization(this DalAuthorization dalAuthorisation)
@@ -21,8 +22,9 @@ namespace BLL.Mapper
             return new AuthorizationEntity()
             {
                 Id = dalAuthorisation.Id,
-                Login = dalAuthorisation.Login,
-                Password = dalAuthorisation.Password
+                Email = dalAuthorisation.Email,
+                Password = dalAuthorisation.Password,
+                UserId = dalAuthorisation.UserId
             };
         }
     }

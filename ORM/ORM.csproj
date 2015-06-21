@@ -74,21 +74,9 @@
   <ItemGroup>
     <Compile Include="Authorization.cs" />
     <Compile Include="EntityModel.cs" />
-    <Compile Include="Migrations\201506200957006_123.cs" />
-    <Compile Include="Migrations\201506200957006_123.Designer.cs">
-      <DependentUpon>201506200957006_123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506201157076_12345.cs" />
-    <Compile Include="Migrations\201506201157076_12345.Designer.cs">
-      <DependentUpon>201506201157076_12345.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506201516213_21345.cs" />
-    <Compile Include="Migrations\201506201516213_21345.Designer.cs">
-      <DependentUpon>201506201516213_21345.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506202324325_1234567.cs" />
-    <Compile Include="Migrations\201506202324325_1234567.Designer.cs">
-      <DependentUpon>201506202324325_1234567.cs</DependentUpon>
+    <Compile Include="Migrations\201506210941531_666.cs" />
+    <Compile Include="Migrations\201506210941531_666.Designer.cs">
+      <DependentUpon>201506210941531_666.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,17 +89,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506200957006_123.resx">
-      <DependentUpon>201506200957006_123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506201157076_12345.resx">
-      <DependentUpon>201506201157076_12345.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506201516213_21345.resx">
-      <DependentUpon>201506201516213_21345.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506202324325_1234567.resx">
-      <DependentUpon>201506202324325_1234567.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506210941531_666.resx">
+      <DependentUpon>201506210941531_666.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -40,11 +40,11 @@ namespace Dal.Repository
         }
         public int GetId(DalAuthorization dalAuth)
         {
-            return context.Set<Authorization>().FirstOrDefault(x => x.Login == dalAuth.Login).Id;
+            return context.Set<Authorization>().FirstOrDefault(x => x.Email == dalAuth.Email).Id;
         }
-        public DalAuthorization GetByUserName(string login)
+        public DalAuthorization GetByUserName(string Email)
         {
-            return context.Set<Authorization>().FirstOrDefault(x => x.Login == login).ToDalAuth();
+            return context.Set<Authorization>().FirstOrDefault(x => x.Email == Email).ToDalAuth();
         }
     }
 }
