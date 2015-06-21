@@ -74,8 +74,25 @@
   <ItemGroup>
     <Compile Include="Authorization.cs" />
     <Compile Include="EntityModel.cs" />
+    <Compile Include="Migrations\201506211511457_12345.cs" />
+    <Compile Include="Migrations\201506211511457_12345.Designer.cs">
+      <DependentUpon>201506211511457_12345.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506211553180_12.cs" />
+    <Compile Include="Migrations\201506211553180_12.Designer.cs">
+      <DependentUpon>201506211553180_12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506212230353_7777.cs" />
+    <Compile Include="Migrations\201506212230353_7777.Designer.cs">
+      <DependentUpon>201506212230353_7777.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506212240306_77777.cs" />
+    <Compile Include="Migrations\201506212240306_77777.Designer.cs">
+      <DependentUpon>201506212240306_77777.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +100,26 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506211511457_12345.resx">
+      <DependentUpon>201506211511457_12345.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506211553180_12.resx">
+      <DependentUpon>201506211553180_12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506212230353_7777.resx">
+      <DependentUpon>201506212230353_7777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506212240306_77777.resx">
+      <DependentUpon>201506212240306_77777.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Constants\Constants.csproj">
+      <Project>{4a23677b-dd38-4ec1-ae06-ffb070a79a0d}</Project>
+      <Name>Constants</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

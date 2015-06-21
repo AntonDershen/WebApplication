@@ -5,6 +5,9 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject.Web.Common;
+using BLL.Interface.Services;
+using System.Data.Entity;
+
 namespace WebApplication
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -16,6 +19,7 @@ namespace WebApplication
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }

@@ -13,5 +13,6 @@ namespace BLL.Interface.Services
         void DeleteAuthorization(AuthorizationEntity authorization);
         AuthorizationEntity GetAuthorizationById(int id);
         bool CheckForm(AuthorizationEntity authorization);
+        AuthorizationEntity GetAuthorizationByEmail(string Email);
     }
 }

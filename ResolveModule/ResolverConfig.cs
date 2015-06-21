@@ -33,6 +33,9 @@ namespace ResolverConfig
 
             kernel.Bind<IAuthorizationService>().To<AuthorizationServices>();
             kernel.Bind<IRepository<DalAuthorization>>().To<AuthrizationRepository>();
+
+            kernel.Bind<IRoleService>().To<RoleService>();
+            kernel.Bind<IRoleRepository<DalRole>>().To<RoleRepository>();
         }
     }
 }

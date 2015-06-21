@@ -72,9 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\AuthorizationMapper.cs" />
+    <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AuthorizationRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

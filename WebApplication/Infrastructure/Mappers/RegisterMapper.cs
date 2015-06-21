@@ -8,7 +8,7 @@ namespace WebApplication.Infrastructure.Mappers
 {
     public static class RegisterMapper
     {
-        public static UserEntity ToBllUser(this RegisterModel registerModel)
+        public static UserEntity ToBllUser(this RegisterModel registerModel,int RoleId)
         {
             return new UserEntity
             {

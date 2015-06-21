@@ -16,12 +16,13 @@ namespace ORM
         
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Authorization> Authorization { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-          .HasMany(e => e.Authorizations)
-          .WithRequired(e => e.User)
-          .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Role>()
+                .HasMany(e => e.Users)
+                .WithRequired(e => e.Role)
+                .WillCascadeOnDelete(false);
         }
         public void Dispose()
         {

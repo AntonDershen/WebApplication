@@ -173,10 +173,12 @@
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\RoleMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,6 +209,10 @@
     <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
       <Project>{7c6c4cc6-a289-447f-a34c-6e488646e2b6}</Project>
       <Name>BLL.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Constants\Constants.csproj">
+      <Project>{4a23677b-dd38-4ec1-ae06-ffb070a79a0d}</Project>
+      <Name>Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\ResolveModule\ResolveModule.csproj">
       <Project>{65db6758-f222-435c-a70f-779e1c110bf3}</Project>

@@ -28,7 +28,8 @@ namespace Dal.Mapper
                 return new User()
                 {
                     Id = dalUser.Id,
-                    UserName = dalUser.UserName
+                    UserName = dalUser.UserName,
+                    RoleId = dalUser.RoleId
                 };
             }
             return null;

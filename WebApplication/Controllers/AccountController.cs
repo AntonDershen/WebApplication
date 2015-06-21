@@ -7,16 +7,19 @@ using WebApplication.Models;
 using BLL.Interface.Services;
 using WebApplication.Infrastructure.Mappers;
 using System.Web.Security;
+using Constants;
 namespace WebApplication.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUserService userService;
         private readonly IAuthorizationService authService;
-        public AccountController(IUserService userService,IAuthorizationService authService)
+        private readonly IRoleService roleService;
+        public AccountController(IUserService userService, IAuthorizationService authService, IRoleService roleService)
         {
             this.userService = userService;
             this.authService = authService;
+            this.roleService = roleService;
         }
         [HttpGet]
         public ActionResult LogIn()
@@ -31,7 +34,7 @@ namespace WebApplication.Controllers
             {
                 if(authService.CheckForm(model.ToBllUser()))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
+                    FormsAuthentication.SetAuthCookie(userService.GetUserById(authService.GetAuthorizationByEmail(model.Email).UserId).UserName, true);
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -49,7 +52,8 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                int id = userService.CreateUser(model.ToBllUser());
+                
+                int id = userService.CreateUser(model.ToBllUser(roleService.GetIdByDescriptor(Constants.Constants.User)));
                 if (id>0)
                 {
                     authService.CreateAuthorization(model.ToBllAuthorization(id));

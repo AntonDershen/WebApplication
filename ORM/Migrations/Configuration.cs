@@ -4,7 +4,7 @@ namespace ORM.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
+    using Constants;
     internal sealed class Configuration : DbMigrationsConfiguration<ORM.EntityModel>
     {
         public Configuration()
@@ -14,18 +14,13 @@ namespace ORM.Migrations
 
         protected override void Seed(ORM.EntityModel context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Role.Add(new Role() {  Description = Constants.User });
+            context.Role.Add(new Role() {  Description = Constants.Admin });
+            context.SaveChanges();
+            context.Users.Add(new User(){RoleId = 2, UserName = Constants.AdminName});
+            context.SaveChanges();
+            context.Authorization.Add(new Authorization() { UserId = 1, Email = Constants.AdminEmail, Password = Constants.AdminPassword });
+            context.SaveChanges();
         }
     }
 }

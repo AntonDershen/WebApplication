@@ -8,8 +8,14 @@ namespace ORM
 {
     public partial class User
     {
+        public User()
+        {
+            Authorizations = new HashSet<Authorization>();
+        }
         public int Id { get; set; }
         public string UserName { get; set; }
         public virtual ICollection<Authorization> Authorizations { get; set; }
+        public int RoleId { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

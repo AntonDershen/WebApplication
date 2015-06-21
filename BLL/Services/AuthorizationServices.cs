@@ -27,6 +27,11 @@ namespace BLL.Services
             return authRepository.GetById(Id).ToBllAuthorization();
 
         }
+        public AuthorizationEntity GetAuthorizationByEmail(string Email)
+        {
+            return authRepository.GetByUserName(Email).ToBllAuthorization();
+
+        }
         public void CreateAuthorization(AuthorizationEntity user)
         {
              authRepository.Create(user.ToDalAuthorization());
