@@ -19,13 +19,13 @@ namespace WebApplication.Controllers
             this.authService = authService;
         }
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult LogIn()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
+        public ActionResult LogIn(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace WebApplication.Controllers
             }
           return View(model);
          }
-        public ActionResult Logoff()
+        public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");

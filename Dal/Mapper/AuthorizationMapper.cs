@@ -11,23 +11,33 @@ namespace Dal.Mapper
     {
         public static DalAuthorization ToDalAuth(this Authorization auth)
         {
-            return new DalAuthorization()
+            if (auth != null)
             {
-                Id = auth.Id,
-                Email = auth.Email,
-                Password = auth.Password,
-                UserId = auth.UserId
-            };
+                return new DalAuthorization()
+                {
+                    Id = auth.Id,
+                    Email = auth.Email,
+                    Password = auth.Password,
+                    UserId = auth.UserId
+                };
+            }
+            return null;
+        
         }
         public static Authorization ToAuth(this DalAuthorization dalAuth)
         {
-            return new Authorization()
+
+            if (dalAuth != null)
             {
-                Id = dalAuth.Id,
-                Email = dalAuth.Email,
-                Password = dalAuth.Password,
-                UserId = dalAuth.UserId
-            };
+                return new Authorization()
+                {
+                    Id = dalAuth.Id,
+                    Email = dalAuth.Email,
+                    Password = dalAuth.Password,
+                    UserId = dalAuth.UserId
+                };
+            }
+            return null;
         }
 
     }
