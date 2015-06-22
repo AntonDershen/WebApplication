@@ -42,7 +42,7 @@ namespace Dal.Repository
             public int GetId(DalUser dalUser) {
                 return context.Set<User>().FirstOrDefault(x => x.UserName == dalUser.UserName).Id;
             }
-            public DalUser GetByUserName(string UserName)
+            public DalUser GetByName(string UserName)
             {
                 return context.Set<User>().FirstOrDefault(x => x.UserName == UserName).ToDalUser();
             }

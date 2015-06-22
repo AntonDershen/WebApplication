@@ -42,7 +42,7 @@ namespace Dal.Repository
         {
             return context.Set<Authorization>().FirstOrDefault(x => x.Email == dalAuth.Email).Id;
         }
-        public DalAuthorization GetByUserName(string Email)
+        public DalAuthorization GetByName(string Email)
         {
             return context.Set<Authorization>().FirstOrDefault(x => x.Email == Email).ToDalAuth();
         }

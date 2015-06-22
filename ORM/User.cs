@@ -15,6 +15,7 @@ namespace ORM
         public int Id { get; set; }
         public string UserName { get; set; }
         public virtual ICollection<Authorization> Authorizations { get; set; }
+        public virtual ICollection<Document> Documents { get; set; }
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
     }

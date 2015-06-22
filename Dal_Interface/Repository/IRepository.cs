@@ -11,7 +11,7 @@ namespace Dal.Interface.Repository
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int Id);
-        TEntity GetByUserName(string UserName);
+        TEntity GetByName(string Name);
         void Create(TEntity e);
         void Delete(TEntity e);
         int GetId(TEntity e);

@@ -28,7 +28,7 @@ namespace BLL.Services
         }
         public int CreateUser(UserEntity user)
         {
-            if (userRepository.GetByUserName(user.UserName) == null)
+            if (userRepository.GetByName(user.UserName) == null)
             {
                 userRepository.Create(user.ToDalUser());
                 uow.Commit();

@@ -66,10 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\AuthorizationMapper.cs" />
+    <Compile Include="Mapper\DocumentMapper.cs" />
     <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthorizationServices.cs" />
+    <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
@@ -77,6 +79,10 @@
     <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
       <Project>{7c6c4cc6-a289-447f-a34c-6e488646e2b6}</Project>
       <Name>BLL.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Constants\Constants.csproj">
+      <Project>{4a23677b-dd38-4ec1-ae06-ffb070a79a0d}</Project>
+      <Name>Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dal_Interface\DAL.Interface.csproj">
       <Project>{439a73af-497e-4795-b09c-b6e0d92aa265}</Project>

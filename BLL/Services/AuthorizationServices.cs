@@ -29,7 +29,7 @@ namespace BLL.Services
         }
         public AuthorizationEntity GetAuthorizationByEmail(string Email)
         {
-            return authRepository.GetByUserName(Email).ToBllAuthorization();
+            return authRepository.GetByName(Email).ToBllAuthorization();
 
         }
         public void CreateAuthorization(AuthorizationEntity user)
@@ -45,7 +45,7 @@ namespace BLL.Services
         }
         public bool CheckForm(AuthorizationEntity authorization)
         {
-            DalAuthorization auth =  authRepository.GetByUserName(authorization.Email);
+            DalAuthorization auth =  authRepository.GetByName(authorization.Email);
             if (auth != null && auth.Password == authorization.Password)
                 return true;
             return false;

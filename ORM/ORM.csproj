@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authorization.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="EntityModel.cs" />
     <Compile Include="Migrations\201506211511457_12345.cs" />
     <Compile Include="Migrations\201506211511457_12345.Designer.cs">
