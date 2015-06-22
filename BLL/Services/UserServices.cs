@@ -21,9 +21,9 @@ namespace BLL.Services
         {
             return userRepository.GetAll().Select(user => user.ToBllUser());
         }
-        public UserEntity GetUserById(int Id)
+        public UserEntity GetUserById(int id)
         {
-            return userRepository.GetById(Id).ToBllUser();
+            return userRepository.GetById(id).ToBllUser();
 
         }
         public int CreateUser(UserEntity user)
@@ -40,6 +40,9 @@ namespace BLL.Services
         {
             userRepository.Delete(user.ToDalUser());
             uow.Commit();
+        }
+        public UserEntity GetUserByName(string name) {
+            return userRepository.GetByName(name).ToBllUser();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL.Interface.Entities;
+using System.Web;
 namespace BLL.Interface.Services
 {
     public interface IDocumentService
@@ -11,6 +12,7 @@ namespace BLL.Interface.Services
         int FindDocument(string name);
         void DeleteDocument(DocumentEntity documentEntity);
         void CreateDocument(DocumentEntity documentEntity);
+        string SaveFile(HttpPostedFileBase file,string name,string userName);
 
     }
 }

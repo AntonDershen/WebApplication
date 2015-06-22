@@ -5,8 +5,10 @@ using System.Web;
 
 namespace WebApplication.Models
 {
-    public class CreateDocumentModel
+    public class DocumentViewModel
     {
         public string Name { get; set; }
+        public DateTime DateTime { get; set; }
+        public string Type { get; set; }
     }
 }

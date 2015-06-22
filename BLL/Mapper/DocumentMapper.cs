@@ -23,15 +23,19 @@ namespace BLL.Mapper
         }
         public static DocumentEntity ToBllAuthorization(this DalDocument dalDocument)
         {
-            return new DocumentEntity()
+            if (dalDocument != null)
             {
-                Id = dalDocument.Id,
-                CreateDate = dalDocument.CreateDate,
-                DocumentPath = dalDocument.DocumentPath,
-                Name = dalDocument.Name,
-                UserId = dalDocument.UserId,
-                Type = dalDocument.Type
-            };
+                return new DocumentEntity()
+                {
+                    Id = dalDocument.Id,
+                    CreateDate = dalDocument.CreateDate,
+                    DocumentPath = dalDocument.DocumentPath,
+                    Name = dalDocument.Name,
+                    UserId = dalDocument.UserId,
+                    Type = dalDocument.Type
+                };
+            }
+            return null;
         }
     }
 }

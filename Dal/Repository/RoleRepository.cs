@@ -23,7 +23,6 @@ namespace Dal.Repository
        }
        public int GetIdByDescriptor(string descriptor)
        {
-           Role role = context.Set<Role>().Find(1);
            return context.Set<Role>().FirstOrDefault(x => x.Description == descriptor).Id;
        }
     }

@@ -9,6 +9,8 @@ using Dal.Interface.Repository;
 using Dal.Interface.DTO;
 using BLL.Mapper;
 using Constants;
+using System.Web;
+using System.IO;
 namespace BLL.Services
 {
     public class DocumentService:IDocumentService
@@ -34,6 +36,8 @@ namespace BLL.Services
                 documentId++;
                 name.Insert(name.Length-(documentId-1).ToString().Length, documentId);
                 entity = documentRepository.GetByName(name.ToString()).ToBllAuthorization();
+                if (entity == null)
+                    return documentId;
             }
         }
         public void CreateDocument(DocumentEntity documentEntity)
@@ -47,6 +51,14 @@ namespace BLL.Services
             documentRepository.Delete(documentEntity.ToDalDocument());
             uow.Commit();
 
+        }
+        public string SaveFile(HttpPostedFileBase file,string name,string userName)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory +userName+"\\";
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string fileName = name;
+            file.SaveAs(path + fileName);
+            return path;
         }
     }
 }

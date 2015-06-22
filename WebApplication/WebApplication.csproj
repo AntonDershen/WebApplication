@@ -159,6 +159,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Document\CreateDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -173,11 +174,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\DocumentMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RoleMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\CreateDocumentModel.cs" />
+    <Compile Include="Models\DocumentViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
@@ -230,9 +233,7 @@
   <ItemGroup>
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Document\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

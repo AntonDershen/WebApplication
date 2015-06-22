@@ -23,15 +23,19 @@ namespace Dal.Mapper
         }
         public static DalDocument ToDalDocument(this Document document)
         {
-            return new DalDocument()
+            if (document != null)
             {
-                Id = document.Id,
-                Name = document.Name,
-                CreateDate = document.CreateDate,
-                DocumentPath = document.DocumentPath,
-                UserId = document.UserId,
-                Type = document.Type
-            };
+                return new DalDocument()
+                {
+                    Id = document.Id,
+                    Name = document.Name,
+                    CreateDate = document.CreateDate,
+                    DocumentPath = document.DocumentPath,
+                    UserId = document.UserId,
+                    Type = document.Type
+                };
+            }
+            return null;
         }
     }
 }

@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201506212240306_77777.Designer.cs">
       <DependentUpon>201506212240306_77777.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506222150581_66666.cs" />
+    <Compile Include="Migrations\201506222150581_66666.Designer.cs">
+      <DependentUpon>201506222150581_66666.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506212240306_77777.resx">
       <DependentUpon>201506212240306_77777.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506222150581_66666.resx">
+      <DependentUpon>201506222150581_66666.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
