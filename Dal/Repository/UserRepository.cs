@@ -11,7 +11,7 @@ using System.Data.Entity;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-        public class UserRepository : IRepository<DalUser>
+    public class UserRepository : IUserRepository
         {
             private readonly DbContext context;
             public UserRepository(DbContext context)
@@ -46,5 +46,13 @@ namespace Dal.Repository
             {
                 return context.Set<User>().FirstOrDefault(x => x.UserName == UserName).ToDalUser();
             }
+            public IEnumerable<DalDocument> GetAllDocument(string userName)
+            {
+                User user = context.Set<User>().FirstOrDefault(u=>u.UserName == userName);
+                if(user!=null)
+                return user.Documents.Select(x=>x.ToDalDocument());
+                return null;
+            }
+
         }
 }

@@ -9,10 +9,11 @@ namespace BLL.Interface.Services
 {
     public interface IDocumentService
     {
+        DocumentEntity FindById(int id);
         int FindDocument(string name);
         void DeleteDocument(DocumentEntity documentEntity);
         void CreateDocument(DocumentEntity documentEntity);
-        string SaveFile(HttpPostedFileBase file,string name,string userName);
+        string SaveFile(HttpPostedFileBase file,string userName);
 
     }
 }

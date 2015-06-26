@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication.Models.DocumentViewModel>
+
+
+<table class="table">
+ @if (Model != null) { 
+foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            <a href='@Url.Action("DownloadDocument","Document",new {documentId = item.Id})'>
+                <i class="glyphicon glyphicon-download"></i>
+            </a>
+        </td>
+        <td>
+            <a href='@Url.Action("DeleteDocument","Document",new {documentId = item.Id})'>
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        </td>
+    </tr>
+}
+ }
+
+</table>

@@ -14,6 +14,7 @@ namespace BLL.Mapper
         {
             return new DalDocument()
             {
+                Id = documentEntity.Id,
                 CreateDate = documentEntity.CreateDate,
                 DocumentPath = documentEntity.DocumentPath,
                 Name = documentEntity.Name,

@@ -29,7 +29,7 @@ namespace ResolverConfig
             kernel.Bind<DbContext>().To<EntityModel>().InRequestScope();
 
             kernel.Bind<IUserService>().To<UserService>();
-            kernel.Bind<IRepository<DalUser>>().To<UserRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
 
             kernel.Bind<IAuthorizationService>().To<AuthorizationServices>();
             kernel.Bind<IRepository<DalAuthorization>>().To<AuthrizationRepository>();

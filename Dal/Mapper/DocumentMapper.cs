@@ -13,7 +13,7 @@ namespace Dal.Mapper
         {
             return new Document()
             {
-
+                Id = dalDocument.Id,
                 Name = dalDocument.Name,
                 CreateDate = dalDocument.CreateDate,
                 DocumentPath = dalDocument.DocumentPath,

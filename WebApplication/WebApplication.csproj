@@ -160,6 +160,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Document\CreateDocument.cshtml" />
+    <Content Include="Views\Document\_ShowDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -175,11 +176,12 @@
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
     <Compile Include="Infrastructure\Mappers\DocumentMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\DocumentViewMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RoleMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\CreateDocumentModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\DocumentViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -198,7 +200,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

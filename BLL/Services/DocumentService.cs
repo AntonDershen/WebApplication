@@ -48,17 +48,21 @@ namespace BLL.Services
         }
         public void DeleteDocument(DocumentEntity documentEntity)
         {
+            File.Delete(AppDomain.CurrentDomain.BaseDirectory+documentEntity.DocumentPath);
             documentRepository.Delete(documentEntity.ToDalDocument());
             uow.Commit();
-
         }
-        public string SaveFile(HttpPostedFileBase file,string name,string userName)
+        public string SaveFile(HttpPostedFileBase file,string userName)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory +userName+"\\";
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            string fileName = name;
-            file.SaveAs(path + fileName);
-            return path;
+            string path = "Documents\\" + userName + "\\";
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + path)) Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory+path);
+            string fileName = DateTime.Now.Millisecond.ToString() + DateTime.Now.Second.ToString();
+            file.SaveAs(AppDomain.CurrentDomain.BaseDirectory + path + fileName);
+            return path+fileName;
+        }
+        public DocumentEntity FindById(int id)
+        {
+            return documentRepository.GetById(id).ToBllAuthorization();
         }
     }
 }

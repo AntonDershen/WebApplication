@@ -17,7 +17,7 @@ namespace ORM.Migrations
             context.Role.Add(new Role() {  Description = Constants.User });
             context.Role.Add(new Role() {  Description = Constants.Admin });
             context.SaveChanges();
-            context.Users.Add(new User(){RoleId = 2, UserName = Constants.AdminName});
+            context.Users.Add(new User(){Id = 1 ,RoleId = 2, UserName = Constants.AdminName});
             context.SaveChanges();
             context.Authorization.Add(new Authorization() { UserId = 1, Email = Constants.AdminEmail, Password = Constants.AdminPassword });
             context.SaveChanges();

@@ -11,8 +11,8 @@ namespace BLL.Services
     public class UserService : IUserService
     {
         private readonly IUnitOfWork uow;
-        private readonly IRepository<DalUser> userRepository;
-        public UserService(IUnitOfWork uow, IRepository<DalUser> repository)
+        private readonly IUserRepository userRepository;
+        public UserService(IUnitOfWork uow, IUserRepository repository)
         {
             this.uow = uow;
             this.userRepository = repository;
@@ -43,6 +43,13 @@ namespace BLL.Services
         }
         public UserEntity GetUserByName(string name) {
             return userRepository.GetByName(name).ToBllUser();
+        }
+        public IEnumerable<DocumentEntity> GetUserDocument(string userName) {
+            IEnumerable<DalDocument> dalDocument= userRepository.GetAllDocument(userName);
+            if(dalDocument!=null)
+                return dalDocument.Select(x => x.ToBllAuthorization());
+            return null;
+        
         }
     }
 }

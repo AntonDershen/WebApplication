@@ -13,5 +13,6 @@ namespace BLL.Interface.Services
         void DeleteUser(UserEntity user);
         UserEntity GetUserById(int id);
         UserEntity GetUserByName(string name);
+        IEnumerable<DocumentEntity> GetUserDocument(string userName);
     }
 }
