@@ -11,7 +11,7 @@ using System.Data.Entity;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository,IDisposable
         {
             private readonly DbContext context;
             public UserRepository(DbContext context)
@@ -52,6 +52,10 @@ namespace Dal.Repository
                 if(user!=null)
                 return user.Documents.Select(x=>x.ToDalDocument());
                 return null;
+            }
+            public void Dispose()
+            {
+                context.Dispose();
             }
 
         }

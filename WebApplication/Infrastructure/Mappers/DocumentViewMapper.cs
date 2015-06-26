@@ -15,7 +15,8 @@ namespace WebApplication.Infrastructure.Mappers
                 Id = documentEntity.Id,
                Name = documentEntity.Name,
                 DateTime = documentEntity.CreateDate,
-                Type = documentEntity.Type
+                Type = documentEntity.Type,
+                Path =documentEntity.DocumentPath
             };
         }
         public static DocumentEntity ToBllDocument(string documentName,int UserId,string Type,string path)

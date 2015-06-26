@@ -13,7 +13,6 @@ using WebApplication.Models;
 using BLL.Interface.Entities;
 namespace WebApplication.Controllers
 {
-    [Authorize]
     public class DocumentController : Controller
     {
         private readonly IDocumentService documentService;
@@ -24,8 +23,6 @@ namespace WebApplication.Controllers
             this.userService = userService;
         }
 
-        //
-        // GET: /Document/
         public ActionResult Index()
         {
             return View();
@@ -64,8 +61,10 @@ namespace WebApplication.Controllers
         public ActionResult DownloadDocument(int documentId)
         {
             DocumentModel document = documentService.FindById(documentId).ToDocument();
+            if(document!=null)
             return File(AppDomain.CurrentDomain.BaseDirectory+document.DocumentPath,
                 "application/force-download",document.Name);
+            return RedirectToAction("Index", "Error", new { error = "Файл не найден" });
         }
         public ActionResult ShowDocument()
         {
@@ -78,5 +77,5 @@ namespace WebApplication.Controllers
             return PartialView("_ShowDocument", model);
         }
     }
-	}
+}
             

@@ -10,7 +10,7 @@ using ORM;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-    public class AuthrizationRepository : IRepository<DalAuthorization>
+    public class AuthrizationRepository : IRepository<DalAuthorization>,IDisposable
     {
         private readonly DbContext context;
         public AuthrizationRepository(DbContext context)
@@ -46,5 +46,9 @@ namespace Dal.Repository
         {
             return context.Set<Authorization>().FirstOrDefault(x => x.Email == Email).ToDalAuth();
         }
-    }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
+        }
 }

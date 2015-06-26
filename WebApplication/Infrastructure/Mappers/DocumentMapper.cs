@@ -10,14 +10,18 @@ namespace WebApplication.Infrastructure.Mappers
     {
         public static DocumentModel ToDocument(this DocumentEntity documentEntity)
         {
-            return new DocumentModel()
+            if (documentEntity != null)
             {
-                Name = documentEntity.Name,
-                CreateDate = documentEntity.CreateDate,
-                DocumentPath = documentEntity.DocumentPath,
-                Type = documentEntity.Type,
-                Id = documentEntity.Id
-            };
+                return new DocumentModel()
+                {
+                    Name = documentEntity.Name,
+                    CreateDate = documentEntity.CreateDate,
+                    DocumentPath = documentEntity.DocumentPath,
+                    Type = documentEntity.Type,
+                    Id = documentEntity.Id
+                };
+            }
+            return null;
         }
       
     }

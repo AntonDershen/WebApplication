@@ -12,6 +12,9 @@ foreach (var item in Model) {
             @Html.DisplayFor(modelItem => item.DateTime)
         </td>
         <td>
+            @Html.Label(AppDomain.CurrentDomain.BaseDirectory + item.Path)
+        </td>
+        <td>
             <a href='@Url.Action("DownloadDocument","Document",new {documentId = item.Id})'>
                 <i class="glyphicon glyphicon-download"></i>
             </a>
