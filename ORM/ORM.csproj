@@ -75,9 +75,9 @@
     <Compile Include="Authorization.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="EntityModel.cs" />
-    <Compile Include="Migrations\201506260954557_123333.cs" />
-    <Compile Include="Migrations\201506260954557_123333.Designer.cs">
-      <DependentUpon>201506260954557_123333.cs</DependentUpon>
+    <Compile Include="Migrations\201506271839029_12.cs" />
+    <Compile Include="Migrations\201506271839029_12.Designer.cs">
+      <DependentUpon>201506271839029_12.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,8 +97,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506260954557_123333.resx">
-      <DependentUpon>201506260954557_123333.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506271839029_12.resx">
+      <DependentUpon>201506271839029_12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

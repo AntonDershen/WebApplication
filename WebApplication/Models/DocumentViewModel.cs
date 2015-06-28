@@ -12,5 +12,7 @@ namespace WebApplication.Models
         public DateTime DateTime { get; set; }
         public string Type { get; set; }
         public string Path { get; set; }
+        public bool Access { get; set; }
+        public string UserName { get; set; }
     }
 }

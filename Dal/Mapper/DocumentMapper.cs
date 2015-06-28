@@ -18,7 +18,8 @@ namespace Dal.Mapper
                 CreateDate = dalDocument.CreateDate,
                 DocumentPath = dalDocument.DocumentPath,
                 UserId = dalDocument.UserId,
-                Type = dalDocument.Type
+                Type = dalDocument.Type,
+                Access = dalDocument.Access
             };
         }
         public static DalDocument ToDalDocument(this Document document)
@@ -32,7 +33,9 @@ namespace Dal.Mapper
                     CreateDate = document.CreateDate,
                     DocumentPath = document.DocumentPath,
                     UserId = document.UserId,
-                    Type = document.Type
+                    Type = document.Type,
+                    Access = document.Access,
+                    UserName = document.User.UserName
                 };
             }
             return null;

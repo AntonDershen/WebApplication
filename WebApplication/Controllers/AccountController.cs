@@ -70,5 +70,6 @@ namespace WebApplication.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        
 	}
 }

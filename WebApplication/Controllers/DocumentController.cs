@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateDocument(HttpPostedFileBase file)
+        public ActionResult CreateDocument(DocumentCreateModel model,HttpPostedFileBase file)
         {
             if (ModelState.IsValid && file != null)
             {
@@ -47,7 +47,7 @@ namespace WebApplication.Controllers
                     documentName.Insert(documentName.Length - docId.ToString().Length, docId);
                 }
                 string path = documentService.SaveFile(file, User.Identity.Name);
-                documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, path));
+                documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, path,model.Access));
                 return RedirectToAction("Index", "Home");
             }
 
@@ -61,9 +61,12 @@ namespace WebApplication.Controllers
         public ActionResult DownloadDocument(int documentId)
         {
             DocumentModel document = documentService.FindById(documentId).ToDocument();
-            if(document!=null)
-            return File(AppDomain.CurrentDomain.BaseDirectory+document.DocumentPath,
-                "application/force-download",document.Name);
+            if(document.Access == true || (User.Identity.IsAuthenticated && User.Identity.Name == document.UserName))
+            {
+                if (document != null)
+                    return File(AppDomain.CurrentDomain.BaseDirectory + document.DocumentPath,
+                        "application/force-download", document.Name);
+            }
             return RedirectToAction("Index", "Error", new { error = "Файл не найден" });
         }
         public ActionResult ShowDocument()

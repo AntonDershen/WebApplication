@@ -13,8 +13,10 @@ namespace ORM
         public string Type { get; set; }
         public DateTime CreateDate { get; set; }
         public string DocumentPath { get; set; }
+        public bool Access { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
+        
         
     }
 }

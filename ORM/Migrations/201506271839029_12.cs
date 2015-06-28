@@ -3,7 +3,7 @@ namespace ORM.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _123333 : DbMigration
+    public partial class _12 : DbMigration
     {
         public override void Up()
         {
@@ -41,6 +41,7 @@ namespace ORM.Migrations
                         Type = c.String(),
                         CreateDate = c.DateTime(nullable: false),
                         DocumentPath = c.String(),
+                        Access = c.Boolean(nullable: false),
                         UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

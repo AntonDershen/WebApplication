@@ -16,10 +16,12 @@ namespace WebApplication.Infrastructure.Mappers
                Name = documentEntity.Name,
                 DateTime = documentEntity.CreateDate,
                 Type = documentEntity.Type,
-                Path =documentEntity.DocumentPath
+                Path =documentEntity.DocumentPath,
+                Access = documentEntity.Access,
+                UserName = documentEntity.UserName
             };
         }
-        public static DocumentEntity ToBllDocument(string documentName,int UserId,string Type,string path)
+        public static DocumentEntity ToBllDocument(string documentName,int UserId,string Type,string path,bool Access)
         {
             return new DocumentEntity()
             {
@@ -27,7 +29,8 @@ namespace WebApplication.Infrastructure.Mappers
                 DocumentPath = path,
                 UserId  = UserId,
                 Type = Type,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.Now,
+                Access = Access
             };
         }
     }

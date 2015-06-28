@@ -18,7 +18,9 @@ namespace WebApplication.Infrastructure.Mappers
                     CreateDate = documentEntity.CreateDate,
                     DocumentPath = documentEntity.DocumentPath,
                     Type = documentEntity.Type,
-                    Id = documentEntity.Id
+                    Id = documentEntity.Id,
+                    Access = documentEntity.Access,
+                    UserName = documentEntity.UserName
                 };
             }
             return null;

@@ -19,7 +19,8 @@ namespace BLL.Mapper
                 DocumentPath = documentEntity.DocumentPath,
                 Name = documentEntity.Name,
                 UserId = documentEntity.UserId,
-                Type = documentEntity.Type
+                Type = documentEntity.Type,
+                Access = documentEntity.Access
             };
         }
         public static DocumentEntity ToBllAuthorization(this DalDocument dalDocument)
@@ -33,7 +34,9 @@ namespace BLL.Mapper
                     DocumentPath = dalDocument.DocumentPath,
                     Name = dalDocument.Name,
                     UserId = dalDocument.UserId,
-                    Type = dalDocument.Type
+                    Type = dalDocument.Type,
+                    Access = dalDocument.Access,
+                    UserName = dalDocument.UserName
                 };
             }
             return null;
