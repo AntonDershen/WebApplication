@@ -9,12 +9,10 @@ using System.Text;
 using WebApplication.Infrastructure.Mappers;
 using Constants;
 using System.Web.Security;
-using WebApplication.Models;
 using BLL.Interface.Entities;
-using WebApplication.Filters;
 namespace WebApplication.Controllers
 {
-    [CheckRole(Roles="User")]
+    [Authorize(Roles="User")]
     public class DocumentController : Controller
     {
         private readonly IDocumentService documentService;

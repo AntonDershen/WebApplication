@@ -9,37 +9,33 @@ namespace WebApplication.Infrastructure
 {
     public class CustomRoleProvider : RoleProvider
     {
-        private readonly IUserService UserService;
-        private readonly IRoleService RoleService;
+        private IUserService userService;
         public override string ApplicationName { get; set; }
 
         public CustomRoleProvider()
         {
-            UserService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
-            RoleService = (IRoleService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IRoleService));
         }
 
         public override bool IsUserInRole(string login, string roleName)
         {
-            UserEntity user = UserService.GetUserByName(login);
-            int id = RoleService.GetIdByDescriptor(roleName);
-            if (user != null && id == user.RoleId)
-                return true;
-            return false;
+            using (userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService)))
+            {
+               return userService.CheckUserRole(login, roleName);
+                
+            }
         }
-        public CustomRoleProvider(IRoleService roleService, IUserService userService)
-        {
-            RoleService = roleService;
-            UserService = userService;
-        }
+
         public override string[] GetRolesForUser(string login)
         {
-            UserEntity user = UserService.GetUserByName(login);
-            List<RoleEntity> roles = RoleService.GetAll().Where(role=>role.Id == user.RoleId).ToList();
-            List<string> userRole= new List<string>();
-            foreach (var role in roles)
-                userRole.Add(role.Description);
-            return userRole.ToArray();
+            using (userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService)))
+            {
+                List<string> roles = new List<string>();
+                if (userService.CheckUserRole(login, "User"))
+                    roles.Add("User");
+                if (userService.CheckUserRole(login, "Admin"))
+                    roles.Add("Admin");
+                return roles.ToArray();
+            }
         }
 
         public override void CreateRole(string roleName)
@@ -57,7 +53,6 @@ namespace WebApplication.Infrastructure
             throw new NotImplementedException();
         }
 
-        #region UnusedMethods
         public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
         {
             throw new NotImplementedException();
@@ -83,6 +78,5 @@ namespace WebApplication.Infrastructure
             throw new NotImplementedException();
         }
 
-        #endregion
     }
 }

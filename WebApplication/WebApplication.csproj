@@ -174,10 +174,10 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\AuthorizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomRoleProvider.cs" />
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
     <Compile Include="Infrastructure\Mappers\DocumentMapper.cs" />
     <Compile Include="Infrastructure\Mappers\DocumentViewMapper.cs" />

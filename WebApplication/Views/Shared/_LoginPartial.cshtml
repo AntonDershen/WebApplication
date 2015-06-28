@@ -1,5 +1,5 @@
-﻿@using WebApplication.Filters;
-@if (Request.IsAuthenticated)
+﻿
+@if (Request.IsAuthenticated && User.IsInRole("User"))
 {
    
    <ul class="nav navbar-nav navbar-right">
