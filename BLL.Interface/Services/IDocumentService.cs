@@ -11,9 +11,9 @@ namespace BLL.Interface.Services
     {
         DocumentEntity FindById(int id);
         int FindDocument(string name);
-        void DeleteDocument(DocumentEntity documentEntity);
+        void DeleteDocument(DocumentEntity documentEntity,string userName);
         void CreateDocument(DocumentEntity documentEntity);
         string SaveFile(HttpPostedFileBase file,string userName);
-
+        IEnumerable<DocumentEntity> FindDocumentByAdmin(string documentName);
     }
 }

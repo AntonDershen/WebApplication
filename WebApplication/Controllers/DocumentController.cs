@@ -56,7 +56,8 @@ namespace WebApplication.Controllers
         }
         public ActionResult DeleteDocument(int documentId)
         {
-            documentService.DeleteDocument(documentService.FindById(documentId));
+
+            documentService.DeleteDocument(documentService.FindById(documentId), User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
         public ActionResult DownloadDocument(int documentId)

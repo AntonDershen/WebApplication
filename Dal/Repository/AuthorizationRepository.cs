@@ -10,10 +10,10 @@ using ORM;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-    public class AuthrizationRepository : IRepository<DalAuthorization>
+    public class AuthorizationRepository : IRepository<DalAuthorization>
     {
         private readonly DbContext context;
-        public AuthrizationRepository(DbContext context)
+        public AuthorizationRepository(DbContext context)
         {
             this.context = context;
         }

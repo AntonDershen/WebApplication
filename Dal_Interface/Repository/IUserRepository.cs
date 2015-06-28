@@ -12,5 +12,6 @@ namespace Dal.Interface.Repository
     {
         IEnumerable<DalDocument> GetAllDocument(string userName);
         bool CheckUserRole(string userName,string userRole);
+        IEnumerable<DalUser> GetUserAdminFind(string userName);
     }
 }

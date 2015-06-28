@@ -14,6 +14,7 @@ namespace BLL.Interface.Services
         UserEntity GetUserById(int id);
         UserEntity GetUserByName(string name);
         IEnumerable<DocumentEntity> GetUserDocument(string userName);
+        IEnumerable<UserEntity> GetUserAdminFind(string userName);
         bool CheckUserRole(string userName, string userRole);
     }
 }

@@ -6,6 +6,7 @@ using BLL.Interface.Services;
 using BLL.Interface.Entities;
 using Dal.Interface.DTO;
 using BLL.Mapper;
+using System.IO;
 namespace BLL.Services
 {
     public class UserService : IUserService
@@ -38,6 +39,9 @@ namespace BLL.Services
         }
         public void DeleteUser(UserEntity user)
         {
+            string path = "Documents\\" + user.UserName + "\\";
+            DirectoryInfo dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + path);
+            dir.Delete(true);
             userRepository.Delete(user.ToDalUser());
             uow.Commit();
         }
@@ -59,5 +63,12 @@ namespace BLL.Services
         {
             
         }
+        public IEnumerable<UserEntity> GetUserAdminFind(string userName) {
+            IEnumerable<DalUser> dalUser =  userRepository.GetUserAdminFind(userName);
+            if (dalUser != null)
+                return dalUser.Select(x => x.ToBllUser());
+            return null;
+        }
+
     }
 }

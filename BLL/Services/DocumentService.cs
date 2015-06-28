@@ -16,8 +16,8 @@ namespace BLL.Services
     public class DocumentService:IDocumentService
     {
         private readonly IUnitOfWork uow;
-        private readonly IRepository<DalDocument> documentRepository;
-        public DocumentService(IUnitOfWork uow, IRepository<DalDocument> repository)
+        private readonly IDocumentRepository documentRepository;
+        public DocumentService(IUnitOfWork uow, IDocumentRepository repository)
         {
             this.uow = uow;
             this.documentRepository = repository;
@@ -46,11 +46,14 @@ namespace BLL.Services
             uow.Commit();
         
         }
-        public void DeleteDocument(DocumentEntity documentEntity)
+        public void DeleteDocument(DocumentEntity documentEntity,string userName)
         {
-            File.Delete(AppDomain.CurrentDomain.BaseDirectory+documentEntity.DocumentPath);
-            documentRepository.Delete(documentEntity.ToDalDocument());
-            uow.Commit();
+            if (userName == documentEntity.UserName)
+            {
+                File.Delete(AppDomain.CurrentDomain.BaseDirectory + documentEntity.DocumentPath);
+                documentRepository.Delete(documentEntity.ToDalDocument());
+                uow.Commit();
+            }
         }
         public string SaveFile(HttpPostedFileBase file,string userName)
         {
@@ -63,6 +66,13 @@ namespace BLL.Services
         public DocumentEntity FindById(int id)
         {
             return documentRepository.GetById(id).ToBllAuthorization();
+        }
+        public IEnumerable<DocumentEntity> FindDocumentByAdmin(string documentName) {
+            IEnumerable<DalDocument> dalDocument = documentRepository.FindDocumentByAdmin(documentName);
+            if (dalDocument != null)
+                return dalDocument.Select(x => x.ToBllAuthorization());
+            return null;
+
         }
     }
 }

@@ -1,6 +1,40 @@
-﻿@{ string Identity = ViewBag.Identity;}
+﻿
+@{ string Identity = ViewBag.Identity;}
            
 <h1>@Identity</h1> 
-@if( User.Identity.IsAuthenticated){
+@if( User.Identity.IsAuthenticated && User.IsInRole("User")){
     Html.RenderAction("ShowDocument", "Document");
 }
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+      <div class="input-group">
+      <span class="input-group-btn">
+          <button class="btn btn-default" id="submit" type="button">Go!</button>
+      </span>
+      <input type="text" id="search" class="form-control" placeholder="Search for...">
+    </div>
+    <div id="users"></div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').click(function (e) {
+            var name = $('#search').val();
+            $.ajax({
+                url:'@Url.Action("FindUser", "Administrator")',
+                type:"POST",
+                data :"userName="+name,
+                success: function (msg) {
+                    $('#users').html(msg);
+                }
+            })
+            $.ajax({
+                url: '@Url.Action("FindDocument", "Administrator")',
+                type: "POST",
+                data: "documentName=" + name,
+                success: function (msg) {
+                    $('#users').append(msg);
+                }
+            })
+        });
+    });
+</script>

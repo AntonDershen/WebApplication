@@ -9,6 +9,7 @@ using Dal.Interface.Repository;
 using ORM;
 using System.Data.Entity;
 using Dal.Mapper;
+using Constants;
 namespace Dal.Repository
 {
     public class UserRepository : IUserRepository
@@ -37,6 +38,9 @@ namespace Dal.Repository
             {
                 User user = UserMapper.ToUser(dalUser);
                 user = context.Set<User>().Single(u => u.Id == user.Id);
+                List<Document> documents = user.Documents.ToList();
+                for(int i =0;i<documents.Count;i++)
+                    context.Set<Document>().Remove(documents[i]);
                 context.Set<User>().Remove(user);
             }
             public int GetId(DalUser dalUser) {
@@ -55,14 +59,24 @@ namespace Dal.Repository
             }
             public bool CheckUserRole(string userName,string UserRole)
             {
+                try{
                 User user = context.Set<User>().FirstOrDefault(x => x.UserName == userName);
-                if (user == null)
-                    return false;
                 if (user.Role.Description == UserRole)
                     return true;
                 return false;
+                }catch
+                {
+                    return false;
+                }
             }
+            public IEnumerable<DalUser> GetUserAdminFind(string userName) {
 
+                IEnumerable<User> user = context.Set<User>().Where(x => x.UserName.Contains(userName));
+                user = user.Where(x => x.Role.Description != Constant.Admin);
+                if(user!=null)
+                    return user.Select(x => x.ToDalUser());
+                return null;
+            }
 
         }
 }
