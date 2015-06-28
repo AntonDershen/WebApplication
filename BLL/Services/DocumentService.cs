@@ -28,7 +28,7 @@ namespace BLL.Services
             int documentId = 0;
             if (entity == null)
                 return documentId;
-            documentName += Constants.Constants.DocumentAddition;
+            documentName += Constants.Constant.DocumentAddition;
             StringBuilder name;
             while (true)
             {

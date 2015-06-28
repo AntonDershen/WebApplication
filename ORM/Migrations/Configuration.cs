@@ -14,12 +14,12 @@ namespace ORM.Migrations
 
         protected override void Seed(ORM.EntityModel context)
         {
-            context.Role.Add(new Role() {  Description = Constants.User });
-            context.Role.Add(new Role() {  Description = Constants.Admin });
+            context.Role.Add(new Role() { Description = Constants.Constant.User });
+            context.Role.Add(new Role() {  Description = Constants.Constant.Admin });
             context.SaveChanges();
-            context.Users.Add(new User(){Id = 1 ,RoleId = 2, UserName = Constants.AdminName});
+            context.Users.Add(new User() { Id = 1, RoleId = 2, UserName = Constants.Constant.AdminName });
             context.SaveChanges();
-            context.Authorization.Add(new Authorization() { UserId = 1, Email = Constants.AdminEmail, Password = Constants.AdminPassword });
+            context.Authorization.Add(new Authorization() { UserId = 1, Email = Constants.Constant.AdminEmail, Password = Constants.Constant.AdminPassword });
             context.SaveChanges();
         }
     }

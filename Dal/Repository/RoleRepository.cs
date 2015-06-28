@@ -10,7 +10,7 @@ using ORM;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-   public class RoleRepository :IRoleRepository<DalRole>,IDisposable
+   public class RoleRepository :IRoleRepository<DalRole>
     {
        private readonly DbContext context;
        public RoleRepository(DbContext context)
@@ -25,9 +25,6 @@ namespace Dal.Repository
        {
            return context.Set<Role>().FirstOrDefault(x => x.Description == descriptor).Id;
        }
-       public void Dispose()
-       {
-           context.Dispose();
-       }
+ 
     }
 }

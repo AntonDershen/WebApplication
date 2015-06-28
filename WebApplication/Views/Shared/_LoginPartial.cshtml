@@ -1,5 +1,7 @@
-﻿@if (Request.IsAuthenticated)
+﻿@using WebApplication.Filters;
+@if (Request.IsAuthenticated)
 {
+   
    <ul class="nav navbar-nav navbar-right">
       <li>
           @Html.ActionLink("Log Off","LogOff","Account")

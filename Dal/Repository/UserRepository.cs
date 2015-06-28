@@ -11,9 +11,9 @@ using System.Data.Entity;
 using Dal.Mapper;
 namespace Dal.Repository
 {
-    public class UserRepository : IUserRepository,IDisposable
+    public class UserRepository : IUserRepository
         {
-            private readonly DbContext context;
+            private  DbContext context;
             public UserRepository(DbContext context)
             {
                 this.context = context;
@@ -53,10 +53,16 @@ namespace Dal.Repository
                 return user.Documents.Select(x=>x.ToDalDocument());
                 return null;
             }
-            public void Dispose()
+            public bool CheckUserRole(string userName,string UserRole)
             {
-                context.Dispose();
+                User user = context.Set<User>().FirstOrDefault(x => x.UserName == userName);
+                if (user == null)
+                    return false;
+                if (user.Role.Description == UserRole)
+                    return true;
+                return false;
             }
+
 
         }
 }

@@ -11,5 +11,6 @@ namespace Dal.Interface.Repository
     public interface IUserRepository : IRepository<DalUser>
     {
         IEnumerable<DalDocument> GetAllDocument(string userName);
+        bool CheckUserRole(string userName,string userRole);
     }
 }

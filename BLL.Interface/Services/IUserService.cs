@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BLL.Interface.Entities;
 namespace BLL.Interface.Services
 {
-    public interface IUserService
+    public interface IUserService:IDisposable
     {
         IEnumerable<UserEntity> GetAllUserEntities();
         int CreateUser(UserEntity user);
@@ -14,5 +14,6 @@ namespace BLL.Interface.Services
         UserEntity GetUserById(int id);
         UserEntity GetUserByName(string name);
         IEnumerable<DocumentEntity> GetUserDocument(string userName);
+        bool CheckUserRole(string userName, string userRole);
     }
 }

@@ -11,8 +11,10 @@ using Constants;
 using System.Web.Security;
 using WebApplication.Models;
 using BLL.Interface.Entities;
+using WebApplication.Filters;
 namespace WebApplication.Controllers
 {
+    [CheckRole(Roles="User")]
     public class DocumentController : Controller
     {
         private readonly IDocumentService documentService;
@@ -21,6 +23,7 @@ namespace WebApplication.Controllers
         {
             this.documentService = documentService;
             this.userService = userService;
+
         }
 
         public ActionResult Index()
@@ -43,7 +46,7 @@ namespace WebApplication.Controllers
                 documentName = new StringBuilder(file.FileName);
                 if (docId != 0)
                 {
-                    documentName.Append(Constants.Constants.DocumentAddition);
+                    documentName.Append(Constants.Constant.DocumentAddition);
                     documentName.Insert(documentName.Length - docId.ToString().Length, docId);
                 }
                 string path = documentService.SaveFile(file, User.Identity.Name);

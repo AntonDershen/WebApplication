@@ -51,5 +51,13 @@ namespace BLL.Services
             return null;
         
         }
+        public bool CheckUserRole(string userName,string userRole)
+        {
+            return userRepository.CheckUserRole(userName, userRole);
+        }
+        public void Dispose()
+        {
+            
+        }
     }
 }

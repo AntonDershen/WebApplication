@@ -15,6 +15,5 @@ namespace Dal.Interface.Repository
         void Create(TEntity e);
         void Delete(TEntity e);
         int GetId(TEntity e);
-        
     }
 }

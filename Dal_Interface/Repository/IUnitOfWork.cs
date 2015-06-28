@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dal.Interface.Repository
 {
-    public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork
     {
         void Commit();
     }

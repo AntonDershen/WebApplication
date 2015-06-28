@@ -53,7 +53,7 @@ namespace WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 
-                int id = userService.CreateUser(model.ToBllUser(roleService.GetIdByDescriptor(Constants.Constants.User)));
+                int id = userService.CreateUser(model.ToBllUser(roleService.GetIdByDescriptor(Constants.Constant.User)));
                 if (id>0)
                 {
                     authService.CreateAuthorization(model.ToBllAuthorization(id));
