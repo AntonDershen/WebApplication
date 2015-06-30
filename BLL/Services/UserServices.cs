@@ -7,6 +7,7 @@ using BLL.Interface.Entities;
 using Dal.Interface.DTO;
 using BLL.Mapper;
 using System.IO;
+using System.Web.Security;
 namespace BLL.Services
 {
     public class UserService : IUserService
@@ -47,6 +48,7 @@ namespace BLL.Services
         }
         public UserEntity GetUserByName(string name) {
             return userRepository.GetByName(name).ToBllUser();
+
         }
         public IEnumerable<DocumentEntity> GetUserDocument(string userName) {
             IEnumerable<DalDocument> dalDocument= userRepository.GetAllDocument(userName);
@@ -57,11 +59,13 @@ namespace BLL.Services
         }
         public bool CheckUserRole(string userName,string userRole)
         {
-            return userRepository.CheckUserRole(userName, userRole);
-        }
-        public void Dispose()
-        {
+            if (userRepository.GetByName(userName) == null)
+            {
+                FormsAuthentication.SignOut();
+                return false;
             
+            }
+            return userRepository.CheckUserRole(userName, userRole);
         }
         public IEnumerable<UserEntity> GetUserAdminFind(string userName) {
             IEnumerable<DalUser> dalUser =  userRepository.GetUserAdminFind(userName);

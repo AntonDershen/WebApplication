@@ -38,7 +38,7 @@ namespace ResolverConfig
             kernel.Bind<IRoleRepository<DalRole>>().To<RoleRepository>();
 
             kernel.Bind<IDocumentService>().To<DocumentService>();
-            kernel.Bind<IDocumentRepository>().To<DocumentRepository>();
+            kernel.Bind<IDocumentRepository>().To<DocumentRepository>(); 
         }
     }
 }

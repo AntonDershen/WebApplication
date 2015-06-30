@@ -15,6 +15,10 @@ foreach (var item in Model) {
             @Html.Label(AppDomain.CurrentDomain.BaseDirectory + item.Path)
         </td>
         <td>
+            Access
+            @Html.CheckBoxFor(modelItem => item.Access, new { @onclick = "some(" + item.Id.ToString() + ")" })
+        </td>
+        <td>
             <a href='@Url.Action("DownloadDocument","Document",new {documentId = item.Id})'>
                 <i class="glyphicon glyphicon-download"></i>
             </a>
@@ -29,3 +33,16 @@ foreach (var item in Model) {
  }
 
 </table>
+
+<script>
+    function some(id) {
+        $.ajax({
+            url: '@Url.Action("ChangeAccess", "Document")',
+            type: "POST",
+            data: "id="+id,
+            success: function (msg) {
+                
+            }
+        })
+    }
+</script>

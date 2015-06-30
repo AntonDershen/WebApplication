@@ -10,5 +10,6 @@ namespace Dal.Interface.Repository
    public interface IDocumentRepository : IRepository<DalDocument>
     {
        IEnumerable<DalDocument> FindDocumentByAdmin(string documentName);
+       void ChangeAccess(int id);
     }
 }

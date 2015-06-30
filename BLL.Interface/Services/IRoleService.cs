@@ -8,7 +8,6 @@ namespace BLL.Interface.Services
 {
     public interface IRoleService
     {
-        void InitializeDb();
         int GetIdByDescriptor(string descriptor);
     }
 }

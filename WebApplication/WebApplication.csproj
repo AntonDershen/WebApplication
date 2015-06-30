@@ -140,14 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Icon.png" />
@@ -161,7 +158,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Document\CreateDocument.cshtml" />
     <Content Include="Views\Document\_ShowDocument.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Administrator\_FindUser.cshtml" />
     <Content Include="Views\Administrator\_FindDocument.cshtml" />

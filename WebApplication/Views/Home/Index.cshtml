@@ -1,6 +1,5 @@
 ﻿
-@{ string Identity = ViewBag.Identity;}
-           
+@{ string Identity = ViewBag.Identity;}       
 <h1>@Identity</h1> 
 @if( User.Identity.IsAuthenticated && User.IsInRole("User")){
     Html.RenderAction("ShowDocument", "Document");

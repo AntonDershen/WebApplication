@@ -28,7 +28,7 @@ namespace BLL.Services
             int documentId = 0;
             if (entity == null)
                 return documentId;
-            documentName += Constants.Constant.DocumentAddition;
+            documentName += Constants.Constant.documentAddition;
             StringBuilder name;
             while (true)
             {
@@ -73,6 +73,10 @@ namespace BLL.Services
                 return dalDocument.Select(x => x.ToBllAuthorization());
             return null;
 
+        }
+        public void ChangeAccess(int id)
+        {
+            documentRepository.ChangeAccess(id);
         }
     }
 }

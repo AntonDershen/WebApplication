@@ -12,7 +12,7 @@ namespace Dal.Repository
 {
     public class AuthorizationRepository : IRepository<DalAuthorization>
     {
-        private readonly DbContext context;
+        private  DbContext context;
         public AuthorizationRepository(DbContext context)
         {
             this.context = context;
@@ -46,6 +46,13 @@ namespace Dal.Repository
         {
             return context.Set<Authorization>().FirstOrDefault(x => x.Email == Email).ToDalAuth();
         }
-   
+        public void Dispose()
+        {
+            if (context != null)
+            {
+                context.Dispose();
+
+            }
         }
+    }
 }

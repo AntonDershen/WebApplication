@@ -12,19 +12,22 @@ namespace Dal.Repository
 {
    public class RoleRepository :IRoleRepository<DalRole>
     {
-       private readonly DbContext context;
+       private  DbContext context;
        public RoleRepository(DbContext context)
        {
            this.context = context;
-       }
-       public void InitializeDb(IEnumerable<DalRole> roles)
-       {
-            context.Set<Role>().AddRange(roles.Select(role=>role.ToRole()));
        }
        public int GetIdByDescriptor(string descriptor)
        {
            return context.Set<Role>().FirstOrDefault(x => x.Description == descriptor).Id;
        }
- 
+       public void Dispose()
+       {
+           if (context != null)
+           {
+               context.Dispose();
+
+           }
+       }
     }
 }

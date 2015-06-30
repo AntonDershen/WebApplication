@@ -7,7 +7,7 @@ namespace Dal.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public DbContext Context { get; private set; }
+        public DbContext Context{get;private set;}
 
         public UnitOfWork(DbContext context)
         {
@@ -21,7 +21,14 @@ namespace Dal.Repository
                 Context.SaveChanges();
             }
         }
+        public void Dispose()
+        {
+            if (Context != null)
+            {
+                Context.Dispose();
 
-
+            }
+        }
+     
     }
 }

@@ -9,7 +9,7 @@ using BLL.Interface.Entities;
 using BLL.Interface.Services;
 namespace WebApplication.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles=Constant.admin)]
     public class AdministratorController : Controller
     {
         private readonly IDocumentService documentService;
@@ -32,19 +32,42 @@ namespace WebApplication.Controllers
         }
         public ActionResult DeleteDocument(int documentId)
         {
-            DocumentEntity doc  =  documentService.FindById(documentId);
-            documentService.DeleteDocument(doc,doc.UserName );
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                DocumentEntity doc = documentService.FindById(documentId);
+                documentService.DeleteDocument(doc, doc.UserName);
+                return RedirectToAction("Index", "Home");
+            }
+            catch {
+                return RedirectToAction("Index","Error",new{error = Constant.error});
+            }
+
+           
         }
         public ActionResult FindDocument(string documentName)
         {
-            IEnumerable<DocumentEntity> documentEntity = documentService.FindDocumentByAdmin(documentName);
-            return PartialView("_FindDocument",documentEntity);
+            try
+            {
+                IEnumerable<DocumentEntity> documentEntity = documentService.FindDocumentByAdmin(documentName);
+                return PartialView("_FindDocument", documentEntity);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error", new { error = Constant.error });
+            }
+
         }
         public ActionResult FindUser(string userName)
         {
+            try
+            {
             IEnumerable<UserEntity> userEntity = userService.GetUserAdminFind(userName);
             return PartialView("_FindUser", userEntity);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error", new { error = Constant.error });
+            }
         }
 	}
 }

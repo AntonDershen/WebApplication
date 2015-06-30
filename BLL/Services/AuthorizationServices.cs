@@ -18,10 +18,7 @@ namespace BLL.Services
             this.uow = uow;
             this.authRepository = repository;
         }
-        public IEnumerable<AuthorizationEntity> GetAllUserEntities()
-        {
-            return authRepository.GetAll().Select(auth => auth.ToBllAuthorization());
-        }
+   
         public AuthorizationEntity GetAuthorizationById(int Id)
         {
             return authRepository.GetById(Id).ToBllAuthorization();

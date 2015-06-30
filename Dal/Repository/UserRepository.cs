@@ -48,7 +48,11 @@ namespace Dal.Repository
             }
             public DalUser GetByName(string UserName)
             {
-                return context.Set<User>().FirstOrDefault(x => x.UserName == UserName).ToDalUser();
+                try
+                {
+                    return context.Set<User>().FirstOrDefault(x => x.UserName == UserName).ToDalUser();
+                }
+                catch { return null; }
             }
             public IEnumerable<DalDocument> GetAllDocument(string userName)
             {
@@ -72,11 +76,18 @@ namespace Dal.Repository
             public IEnumerable<DalUser> GetUserAdminFind(string userName) {
 
                 IEnumerable<User> user = context.Set<User>().Where(x => x.UserName.Contains(userName));
-                user = user.Where(x => x.Role.Description != Constant.Admin);
+                user = user.Where(x => x.Role.Description != Constant.admin);
                 if(user!=null)
                     return user.Select(x => x.ToDalUser());
                 return null;
             }
+            public void Dispose()
+            {
+                if (context != null)
+                {
+                    context.Dispose();
 
+                }
+            }
         }
 }

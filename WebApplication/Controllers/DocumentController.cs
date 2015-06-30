@@ -12,7 +12,7 @@ using System.Web.Security;
 using BLL.Interface.Entities;
 namespace WebApplication.Controllers
 {
-    [Authorize(Roles="User")]
+    [Authorize(Roles=Constants.Constant.user)]
     public class DocumentController : Controller
     {
         private readonly IDocumentService documentService;
@@ -23,7 +23,6 @@ namespace WebApplication.Controllers
             this.userService = userService;
 
         }
-
         public ActionResult Index()
         {
             return View();
@@ -37,28 +36,41 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateDocument(DocumentCreateModel model,HttpPostedFileBase file)
         {
-            if (ModelState.IsValid && file != null)
+            try
             {
-                StringBuilder documentName;
-                int docId = documentService.FindDocument(file.FileName);
-                documentName = new StringBuilder(file.FileName);
-                if (docId != 0)
+                if (ModelState.IsValid && file != null)
                 {
-                    documentName.Append(Constants.Constant.DocumentAddition);
-                    documentName.Insert(documentName.Length - docId.ToString().Length, docId);
+                    StringBuilder documentName;
+                    int docId = documentService.FindDocument(file.FileName);
+                    documentName = new StringBuilder(file.FileName);
+                    if (docId != 0)
+                    {
+                        documentName.Append(Constants.Constant.documentAddition);
+                        documentName.Insert(documentName.Length - docId.ToString().Length, docId);
+                    }
+                    string path = documentService.SaveFile(file, User.Identity.Name);
+                    documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, path, model.Access));
+                    return RedirectToAction("Index", "Home");
                 }
-                string path = documentService.SaveFile(file, User.Identity.Name);
-                documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, path,model.Access));
-                return RedirectToAction("Index", "Home");
-            }
 
-            return View();
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error", new { error = Constant.error });
+            }
         }
         public ActionResult DeleteDocument(int documentId)
         {
-
-            documentService.DeleteDocument(documentService.FindById(documentId), User.Identity.Name);
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                documentService.DeleteDocument(documentService.FindById(documentId), User.Identity.Name);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error", new { error = Constant.error });
+            }
         }
         public ActionResult DownloadDocument(int documentId)
         {
@@ -73,13 +85,33 @@ namespace WebApplication.Controllers
         }
         public ActionResult ShowDocument()
         {
-            IEnumerable<DocumentEntity> documentEntity = userService.GetUserDocument(User.Identity.Name);
-            IEnumerable<DocumentViewModel> model;
-            if (documentEntity != null)
-                model = documentEntity.Select(x => x.ToDocumentView()).Reverse();
-            else
-                model = null;
-            return PartialView("_ShowDocument", model);
+            try
+            {
+                IEnumerable<DocumentEntity> documentEntity = userService.GetUserDocument(User.Identity.Name);
+                IEnumerable<DocumentViewModel> model;
+                if (documentEntity != null)
+                    model = documentEntity.Select(x => x.ToDocumentView()).Reverse();
+                else
+                    model = null;
+                return PartialView("_ShowDocument", model);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error", new { error = Constant.error });
+            }
+        }
+        public void ChangeAccess(int id)
+        { 
+             try
+            {
+                DocumentEntity docEntity = documentService.FindById(id);
+                 if(User.Identity.Name == docEntity.UserName)
+                documentService.ChangeAccess(id);
+            }
+            catch
+            {
+               
+            }
         }
     }
 }

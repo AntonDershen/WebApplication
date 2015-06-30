@@ -18,24 +18,19 @@ namespace WebApplication.Infrastructure
 
         public override bool IsUserInRole(string login, string roleName)
         {
-            using (userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService)))
-            {
+            userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
                return userService.CheckUserRole(login, roleName);
-                
-            }
         }
 
         public override string[] GetRolesForUser(string login)
         {
-            using (userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService)))
-            {
+            userService = (IUserService)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IUserService));
                 List<string> roles = new List<string>();
-                if (userService.CheckUserRole(login, "User"))
-                    roles.Add("User");
-                if (userService.CheckUserRole(login, "Admin"))
-                    roles.Add("Admin");
+                if (userService.CheckUserRole(login, Constants.Constant.admin))
+                    roles.Add(Constants.Constant.admin);
+                if (userService.CheckUserRole(login, Constants.Constant.user))
+                    roles.Add(Constants.Constant.user);
                 return roles.ToArray();
-            }
         }
 
         public override void CreateRole(string roleName)

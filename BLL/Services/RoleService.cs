@@ -19,14 +19,6 @@ namespace BLL.Services
             this.uow = uow;
             this.roleRepository = repository;
         }
-        public void InitializeDb()
-        {
-            List<RoleEntity> roles = new List<RoleEntity>();
-            roles.Add(new RoleEntity() { Id = 1, Description = "User" });
-            roles.Add(new RoleEntity() { Id = 2, Description = "Admin" });
-            roleRepository.InitializeDb(roles.Select(role=>role.ToDalRole()));
-            uow.Commit();
-        }
         public int GetIdByDescriptor(string descriptor)
         {
             return roleRepository.GetIdByDescriptor(descriptor);

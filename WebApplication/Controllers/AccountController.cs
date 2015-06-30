@@ -37,6 +37,7 @@ namespace WebApplication.Controllers
                     FormsAuthentication.SetAuthCookie(userService.GetUserById(authService.GetAuthorizationByEmail(model.Email).UserId).UserName, true);
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("", Constant.errorAuth);
             }
 
             return View(model);
@@ -50,17 +51,23 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
+            if (model.ConfirmPassword != model.Password)
+            {
+                ModelState.AddModelError("", Constant.errorPassword);
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 
-                int id = userService.CreateUser(model.ToBllUser(roleService.GetIdByDescriptor(Constants.Constant.User)));
+                int id = userService.CreateUser(model.ToBllUser(roleService.GetIdByDescriptor(Constants.Constant.user)));
                 if (id>0)
                 {
+                    
                     authService.CreateAuthorization(model.ToBllAuthorization(id));
                     FormsAuthentication.SetAuthCookie(model.UserName, true);
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Пользователь с данным именем существует");
+                ModelState.AddModelError("", Constant.userExist);
                    
             }
           return View(model);

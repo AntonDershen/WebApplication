@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using Dal.Interface.DTO;
 namespace Dal.Interface.Repository
 {
-    public interface IRoleRepository<TEntity> where TEntity : IEntity
+    public interface IRoleRepository<TEntity> : IDisposable where TEntity : IEntity
     {
-        void InitializeDb(IEnumerable<TEntity> entities);
         int GetIdByDescriptor(string descriptor);
 
     }

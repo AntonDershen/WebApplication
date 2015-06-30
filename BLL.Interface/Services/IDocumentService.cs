@@ -15,5 +15,6 @@ namespace BLL.Interface.Services
         void CreateDocument(DocumentEntity documentEntity);
         string SaveFile(HttpPostedFileBase file,string userName);
         IEnumerable<DocumentEntity> FindDocumentByAdmin(string documentName);
+        void ChangeAccess(int id);
     }
 }
