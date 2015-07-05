@@ -16,7 +16,6 @@ namespace WebApplication.Infrastructure.Mappers
                 {
                     Name = documentEntity.Name,
                     CreateDate = documentEntity.CreateDate,
-                    DocumentPath = documentEntity.DocumentPath,
                     Type = documentEntity.Type,
                     Id = documentEntity.Id,
                     Access = documentEntity.Access,

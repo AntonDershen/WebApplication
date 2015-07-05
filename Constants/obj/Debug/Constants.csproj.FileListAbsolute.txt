@@ -1,0 +1,4 @@
+E:\Epam\Constants\bin\Debug\Constants.dll
+E:\Epam\Constants\bin\Debug\Constants.pdb
+E:\Epam\Constants\obj\Debug\Constants.dll
+E:\Epam\Constants\obj\Debug\Constants.pdb

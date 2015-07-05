@@ -12,11 +12,10 @@ namespace ORM
         public string Name { get; set; }
         public string Type { get; set; }
         public DateTime CreateDate { get; set; }
-        public string DocumentPath { get; set; }
         public bool Access { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
-        
+        public virtual ICollection<DocumentContext> DocumentContext { get; set; }
         
     }
 }

@@ -11,7 +11,6 @@ namespace BLL.Interface.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime CreateDate { get; set; }
-        public string DocumentPath { get; set; }
         public int UserId { get; set; }
         public string Type { get; set; }
         public bool Access { get; set; }

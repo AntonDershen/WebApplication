@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\AuthorizationMapper.cs" />
+    <Compile Include="Mapper\DocumentContextMapper.cs" />
     <Compile Include="Mapper\DocumentMapper.cs" />
     <Compile Include="Mapper\RoleMapper.cs" />
     <Compile Include="Mapper\UserMapper.cs" />

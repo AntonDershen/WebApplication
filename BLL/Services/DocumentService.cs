@@ -40,28 +40,27 @@ namespace BLL.Services
                     return documentId;
             }
         }
-        public void CreateDocument(DocumentEntity documentEntity)
+        public void CreateDocument(DocumentEntity documentEntity, HttpPostedFileBase file, string userName)
         {
+            byte[] fileContext = new byte[file.ContentLength];
+            file.InputStream.Read(fileContext,0,file.ContentLength);
             documentRepository.Create(documentEntity.ToDalDocument());
-            uow.Commit();
-        
+            int id = documentRepository.GetId(documentEntity.ToDalDocument());
+            DocumentContextEntity docContext = new DocumentContextEntity()
+            {
+                Path = 1,
+                Context = fileContext,
+                DocumentId = id
+            };
+            documentRepository.SaveContext(docContext.ToDalContext());
         }
         public void DeleteDocument(DocumentEntity documentEntity,string userName)
         {
             if (userName == documentEntity.UserName)
             {
-                File.Delete(AppDomain.CurrentDomain.BaseDirectory + documentEntity.DocumentPath);
                 documentRepository.Delete(documentEntity.ToDalDocument());
                 uow.Commit();
             }
-        }
-        public string SaveFile(HttpPostedFileBase file,string userName)
-        {
-            string path = "Documents\\" + userName + "\\";
-            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + path)) Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory+path);
-            string fileName = DateTime.Now.Millisecond.ToString() + DateTime.Now.Second.ToString();
-            file.SaveAs(AppDomain.CurrentDomain.BaseDirectory + path + fileName);
-            return path+fileName;
         }
         public DocumentEntity FindById(int id)
         {
@@ -77,6 +76,10 @@ namespace BLL.Services
         public void ChangeAccess(int id)
         {
             documentRepository.ChangeAccess(id);
+        }
+        public byte[] GetFileContext(int id)
+        {
+           return documentRepository.GetFileContext(id);
         }
     }
 }

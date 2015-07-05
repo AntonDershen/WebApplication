@@ -11,5 +11,7 @@ namespace Dal.Interface.Repository
     {
        IEnumerable<DalDocument> FindDocumentByAdmin(string documentName);
        void ChangeAccess(int id);
+       void SaveContext(DalDocumentContext dalContext);
+       byte[] GetFileContext(int id);
     }
 }

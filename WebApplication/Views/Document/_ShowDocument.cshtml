@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<WebApplication.Models.DocumentViewModel>
-
+@using Constants;
 
 <table class="table">
  @if (Model != null) { 
@@ -12,7 +12,7 @@ foreach (var item in Model) {
             @Html.DisplayFor(modelItem => item.DateTime)
         </td>
         <td>
-            @Html.Label(AppDomain.CurrentDomain.BaseDirectory + item.Path)
+            @(Request.Url + Constant.downloadController+ item.Id)
         </td>
         <td>
             Access

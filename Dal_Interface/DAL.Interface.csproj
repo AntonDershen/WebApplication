@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="DTO\DalAuthorization.cs" />
     <Compile Include="DTO\DalDocument.cs" />
+    <Compile Include="DTO\DalDocumentContext.cs" />
     <Compile Include="DTO\DalRole.cs" />
     <Compile Include="DTO\DalUser.cs" />
     <Compile Include="DTO\IEntity.cs" />

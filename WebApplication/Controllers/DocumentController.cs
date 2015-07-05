@@ -48,8 +48,7 @@ namespace WebApplication.Controllers
                         documentName.Append(Constants.Constant.documentAddition);
                         documentName.Insert(documentName.Length - docId.ToString().Length, docId);
                     }
-                    string path = documentService.SaveFile(file, User.Identity.Name);
-                    documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, path, model.Access));
+                    documentService.CreateDocument(DocumentViewMapper.ToBllDocument(documentName.ToString(), userService.GetUserByName(User.Identity.Name).Id, file.ContentType, model.Access,User.Identity.Name),file,User.Identity.Name);
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -75,11 +74,10 @@ namespace WebApplication.Controllers
         public ActionResult DownloadDocument(int documentId)
         {
             DocumentModel document = documentService.FindById(documentId).ToDocument();
-            if(document.Access == true || (User.Identity.IsAuthenticated && User.Identity.Name == document.UserName))
+            if (document != null && (document.Access == true || (User.Identity.IsAuthenticated && User.Identity.Name == document.UserName)))
             {
-                if (document != null)
-                    return File(AppDomain.CurrentDomain.BaseDirectory + document.DocumentPath,
-                        "application/force-download", document.Name);
+                byte[] context = documentService.GetFileContext(documentId);
+                return File(documentService.GetFileContext(documentId), document.Type, document.Name);
             }
             return RedirectToAction("Index", "Error", new { error = "Файл не найден" });
         }

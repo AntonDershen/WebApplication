@@ -16,11 +16,11 @@ namespace BLL.Mapper
             {
                 Id = documentEntity.Id,
                 CreateDate = documentEntity.CreateDate,
-                DocumentPath = documentEntity.DocumentPath,
                 Name = documentEntity.Name,
                 UserId = documentEntity.UserId,
                 Type = documentEntity.Type,
-                Access = documentEntity.Access
+                Access = documentEntity.Access,
+                UserName = documentEntity.UserName
             };
         }
         public static DocumentEntity ToBllAuthorization(this DalDocument dalDocument)
@@ -31,7 +31,6 @@ namespace BLL.Mapper
                 {
                     Id = dalDocument.Id,
                     CreateDate = dalDocument.CreateDate,
-                    DocumentPath = dalDocument.DocumentPath,
                     Name = dalDocument.Name,
                     UserId = dalDocument.UserId,
                     Type = dalDocument.Type,

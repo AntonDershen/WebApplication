@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AuthorizationEntity.cs" />
+    <Compile Include="Entities\DocumentContextEntity.cs" />
     <Compile Include="Entities\DocumentEntity.cs" />
     <Compile Include="Entities\RoleEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />

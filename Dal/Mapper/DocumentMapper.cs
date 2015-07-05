@@ -16,7 +16,6 @@ namespace Dal.Mapper
                 Id = dalDocument.Id,
                 Name = dalDocument.Name,
                 CreateDate = dalDocument.CreateDate,
-                DocumentPath = dalDocument.DocumentPath,
                 UserId = dalDocument.UserId,
                 Type = dalDocument.Type,
                 Access = dalDocument.Access
@@ -31,7 +30,6 @@ namespace Dal.Mapper
                     Id = document.Id,
                     Name = document.Name,
                     CreateDate = document.CreateDate,
-                    DocumentPath = document.DocumentPath,
                     UserId = document.UserId,
                     Type = document.Type,
                     Access = document.Access,
