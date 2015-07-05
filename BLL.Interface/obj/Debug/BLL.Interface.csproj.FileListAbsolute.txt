@@ -16,3 +16,4 @@ E:\Epam\BLL.Interface\bin\Debug\System.Web.Http.xml
 E:\Epam\BLL.Interface\bin\Debug\System.Web.Http.WebHost.xml
 E:\Epam\BLL.Interface\obj\Debug\BLL.Interface.dll
 E:\Epam\BLL.Interface\obj\Debug\BLL.Interface.pdb
+E:\Epam\BLL.Interface\obj\Debug\BLL.Interface.csprojResolveAssemblyReference.cache

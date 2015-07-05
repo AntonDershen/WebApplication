@@ -81,16 +81,22 @@ namespace WebApplication.Controllers
             }
             return RedirectToAction("Index", "Error", new { error = "Файл не найден" });
         }
-        public ActionResult ShowDocument()
+        public ActionResult ShowDocument(int count = 1 )
         {
             try
             {
+               
                 IEnumerable<DocumentEntity> documentEntity = userService.GetUserDocument(User.Identity.Name);
-                IEnumerable<DocumentViewModel> model;
+                IList<DocumentViewModel> model;
+             
                 if (documentEntity != null)
-                    model = documentEntity.Select(x => x.ToDocumentView()).Reverse();
+                {
+                    model = documentEntity.Select(x => x.ToDocumentView()).Reverse().ToList();
+                    model = model.Skip(15 * (count-1)).Take(15*count).ToList();
+                }
                 else
                     model = null;
+                 
                 return PartialView("_ShowDocument", model);
             }
             catch

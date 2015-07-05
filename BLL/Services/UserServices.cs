@@ -40,9 +40,6 @@ namespace BLL.Services
         }
         public void DeleteUser(UserEntity user)
         {
-            string path = "Documents\\" + user.UserName + "\\";
-            DirectoryInfo dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory + path);
-            dir.Delete(true);
             userRepository.Delete(user.ToDalUser());
             uow.Commit();
         }
